@@ -156,7 +156,7 @@ public class BlogModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         //注册一个singleton实例
-        context.Services.AddSingleton<TaxCalculator>(new TaxCalculator(taxRatio: 0.18));
+        context.Services.AddSingleton<ITaxCalculator>(new TaxCalculator(taxRatio: 0.18));
 
         //注册一个从IServiceProvider解析得来的工厂方法
         context.Services.AddScoped<ITaxCalculator>(sp => sp.GetRequiredService<TaxCalculator>());
